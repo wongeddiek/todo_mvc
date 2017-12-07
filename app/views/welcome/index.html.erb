@@ -1,0 +1,10 @@
+<h1>Our To-Do List Homepage</h1>
+<% if user_signed_in? %>
+  <p>We should probably start adding our todolist functionality...hold pl0x!</p>
+<% else %>
+<%# no one is signed in %>
+  <p>
+    Come build todoLists with us, <%= link_to 'Sign up now!', new_user_registration_path %>
+  </p>
+<% end %>
+<p>Find me in app/views/welcome/index.html.erb</p>
