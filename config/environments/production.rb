@@ -87,6 +87,7 @@ Rails.application.configure do
   end
 
   # Setup the mailer config
+  config.action_mailer.default_url_options = { host: 'whispering-woodland-68109.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
