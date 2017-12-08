@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  
+
   resources :lists do
-    resources :items
+    resources :items do
+      # add the "toggle" action to the items controller
+      member do
+        # action (put), name of action (:toggle)
+        put :toggle
+      end
+    end
   end
 
   devise_for :users
