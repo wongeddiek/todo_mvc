@@ -7,4 +7,7 @@ class User < ApplicationRecord
 
   has_many :lists, dependent: :destroy
   has_many :articles, dependent: :destroy
+
+  validates :firstname, presence: true
+  validates :lastname, presence: true
 end

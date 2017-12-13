@@ -5,7 +5,7 @@
       <h1 class="article-title">
         <%= article.title %>
         <small>
-          by <%= article.user.email %>
+          by <%= "#{article.user.firstname} #{article.user.lastname[0]}." %>
         </small>
         <small class="pull-right">
           <%= time_ago_in_words(article.created_at) %> ago
