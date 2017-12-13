@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :articles
   resources :lists do
     resources :items do
       # add the "toggle" action to the items controller
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # redirect after user logs in
   devise_for :users
   get 'welcome/index'
 

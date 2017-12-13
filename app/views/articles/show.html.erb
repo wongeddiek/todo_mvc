@@ -1,0 +1,13 @@
+<!-- renders the _article partial (when passing @object to render, rails know to
+render the "object" partial, and passing the @object to the "ojbect" variable) -->
+<%= render @article %>
+<!-- <%= render 'article', article: @article %> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'Edit', edit_article_path(@article) %> |
+      <%= link_to 'Back', articles_path %>
+    </div>
+  </div>
+</div>
