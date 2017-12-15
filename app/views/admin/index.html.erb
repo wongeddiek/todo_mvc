@@ -1,0 +1,44 @@
+<h1>Admin Page</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Blogs</th>
+      <th>Lists</th>
+      <th>Sign-Ins</th>
+      <th>Last Sign-In</th>
+      <th>Admin Permission</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= "#{user.firstname} #{user.lastname}" %></td>
+        <td><%= user.articles.count %></td>
+        <td><%= user.lists.count %></td>
+        <td><%= user.sign_in_count %></td>
+        <td>
+          <span title="<%= user.last_sign_in_at || 'N/A' %>">
+            <%= user.last_sign_in_at ? time_ago_in_words(user.last_sign_in_at) : "N/A" %>
+          </span>
+        </td>
+        <td>
+          <% if user == current_user %>
+            <strong>Self</strong>
+          <% else %>
+            <% unless user.is_admin %>
+              <%= link_to "Promote", promote_admin_path(user) %>
+            <% else %>
+              <strong>Admin</strong>
+              <%= link_to "Demote", promote_admin_path(user) %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

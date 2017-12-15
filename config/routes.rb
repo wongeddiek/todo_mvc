@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'admin', to: 'admin#index', as: :admin
+  get 'admin/promote/:id', to: 'admin#promote', as: :promote_admin
+
   resources :articles
   resources :lists do
     resources :items do
@@ -11,9 +14,17 @@ Rails.application.routes.draw do
     end
   end
 
-  # redirect after user logs in
+  # creates the user routes
   devise_for :users
+
+  # create route for homepage
   get 'welcome/index'
+
+  # create custom profile routes
+  get('profile', to: 'profiles#show', as: :profile)
+
+
+
 
   # set root page
   root to: "welcome#index"
